@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.dibeqiraj.cakeapp"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //File Tree
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Android Support
+    implementation "com.android.support:appcompat-v7:$versions.android_support"
+    implementation "com.android.support:recyclerview-v7:$versions.android_support"
+    implementation "com.android.support:cardview-v7:$versions.android_support"
+    implementation "com.android.support.constraint:constraint-layout:$versions.constraint"
+
+    //Butterknife
+    implementation "com.jakewharton:butterknife:$versions.butterknife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$versions.butterknife"
+    kapt "com.jakewharton:butterknife-compiler:$versions.butterknife"
+
+    //Dagger
+    kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+    implementation "com.google.dagger:dagger:$versions.dagger"
+    compileOnly "org.glassfish:javax.annotation:$versions.glassfish"
+
+    //Fresco
+    implementation "com.facebook.fresco:fresco:$versions.facebook_fresco"
+
+    //Gson
+    implementation "com.google.code.gson:gson:$versions.gson"
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+
+    //Room database
+    implementation "android.arch.persistence.room:runtime:$versions.room"
+    kapt "android.arch.persistence.room:compiler:$versions.room"
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$versions.rxjava"
+    implementation "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+
+    //Testing
+    androidTestImplementation "com.android.support.test:runner:$versions.runner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$versions.espresso"
+    testImplementation "junit:junit:$versions.junit"
+}
