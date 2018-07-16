@@ -6,6 +6,7 @@ import com.dibeqiraj.cakeapp.di.components.DaggerApplicationComponent
 import com.dibeqiraj.cakeapp.di.module.ApplicationModule
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.core.ImagePipelineConfig
+import com.squareup.leakcanary.LeakCanary
 
 class App : Application() {
 
@@ -17,6 +18,14 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeFresco()
+        initializeLeakcanary()
+    }
+
+    fun initializeLeakcanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this)
     }
 
     fun initializeFresco() {

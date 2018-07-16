@@ -44,6 +44,10 @@ dependencies {
     implementation "com.google.dagger:dagger:$versions.dagger"
     compileOnly "org.glassfish:javax.annotation:$versions.glassfish"
 
+    //Developer tools
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanary"
+
     //Fresco
     implementation "com.facebook.fresco:fresco:$versions.facebook_fresco"
 
